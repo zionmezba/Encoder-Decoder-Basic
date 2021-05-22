@@ -1,0 +1,54 @@
+#include <stdio.h>
+#include <string.h>
+const char* encode(char str[])
+{
+    
+    int i;
+    for(i = 0; i< strlen(str); i++)
+    {
+        if((str[i]>= 65 && str[i] < 90) || (str[i]>= 97 && str[i] < 122))
+        {
+            str[i] = str[i]+1;
+        }
+        else if((str[i]== 90 || str[i] == 122))
+        {
+            str[i] = str[i]-25;
+        }
+        else
+        {
+            str[i] = str[i];
+        }
+    }
+    return str;
+}
+
+const char* decode(char str[])
+{
+    
+    int i;
+    for(i = 0; i< strlen(str); i++)
+    {
+        if((str[i]> 65 && str[i] <= 90) || (str[i]> 97 && str[i] <= 122))
+        {
+            str[i] = str[i]-1;
+        }
+        else if((str[i]== 65 || str[i] == 97))
+        {
+            str[i] = str[i]+25;
+        }
+        else
+        {
+            str[i] = str[i];
+        }
+    }
+    return str;
+}
+
+int main()
+{
+    char str[] = "Hi, Sadia";
+    printf("Encoded String: %s\n",encode(str));
+    printf("Decoded String: %s\n",decode(str));
+    return 0;
+}
+
